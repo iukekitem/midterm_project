@@ -46,8 +46,6 @@ python3 midterm_project.py
 python3 midterm_project.py professor_orders.json
 ```
 
-If the provided filename does not exist the current script will raise a `FileNotFoundError`. Consider adding error handling around file opening and JSON decoding.
-
 **Outputs**
 - `customers.json`: JSON object mapping phone numbers to customer names. Example:
 
@@ -66,12 +64,6 @@ If the provided filename does not exist the current script will raise a `FileNot
   "Bagel": {"price": 1.75, "count": 8}
 }
 ```
-
-**Suggestions / Improvements**
-- Add safe file handling and user-friendly errors (handle `FileNotFoundError` and `json.JSONDecodeError`).
-- Validate the input structure before processing (ensure required keys exist and `items` is a list).
-- Consider writing unit tests that run the script against small sample inputs and verify the output files.
-- If multiple orders use different prices for the same item name, decide and document how price conflicts should be handled (current script keeps the first seen price).
 
 ---
 
