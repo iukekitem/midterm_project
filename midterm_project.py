@@ -19,8 +19,28 @@ for order in orders:
     name = order["name"]
     customers[phone] = name
 
-with open("customers_list.json", "w") as cf: #saves the new dict into customers.json
+with open("customers.json", "w") as cf: #saves the new dict into customers.json
     customers_file = json.dump(customers, cf, indent=4) # to make it readable
 
-print(f"Successfully exported {len(customers)} unique customers to customers.jason!") #confirmation
+print(f"Successfully exported {len(customers)} unique customers to customers.json!") #confirmation
+
+items = {}
+for order in orders:
+    for item in order["items"]:
+        item_name = item["name"]
+        item_price = item["price"]
+
+        if item_name not in items:
+            items[item_name] = {
+                "price": item_price,
+                "count": 1
+            }
+        else:
+            items[item_name]["count"] +=1
+
+
+with open("items.json", "w") as il: #saves the new dict into items.json
+    items_file = json.dump(items, il, indent=4) # to make it readable
+
+print(f"Successfully exported {len(items)} unique order's name to orders.json!") #confirmation
 
